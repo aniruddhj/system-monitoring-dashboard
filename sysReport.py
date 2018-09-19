@@ -1,7 +1,6 @@
 import psutil
 import urllib2
 import re
-import json
 import mysql.connector as conn
 import MySQLdb
 import sys
@@ -100,12 +99,7 @@ storeData = getData.getStorage()
 netStat =getData.checkNetwork()
 
 getData.insertNData(netStat)
+getData.insertSData(storeData)
+getData.insertMData(memData)
 
-
-#f = open("text.txt" , "w")
-#for a in memData:
-#	f.write(a + "\n")
-#f1 =  open("test.txt", "w")
-#f1.write(str(x))
-#print Test.get_storage()
 
