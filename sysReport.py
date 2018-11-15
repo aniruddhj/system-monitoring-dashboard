@@ -8,7 +8,7 @@ import logging
 
 sys.tracebacklimit = 0
 
-class getData:
+class GetData:
 
 	@staticmethod	
 	def splitData(data):
@@ -16,13 +16,13 @@ class getData:
 	
 	@staticmethod	
 	def getMemory():
-		data = getData.splitData(str(psutil.virtual_memory()))
-		return getData.requiredData(data)
+		data = GetData.splitData(str(psutil.virtual_memory()))
+		return GetData.requiredData(data)
 		
 	@staticmethod	
 	def getStorage():
-		data = getData.splitData(str(psutil.disk_usage('/')))
-		return getData.requiredData(data)
+		data = GetData.splitData(str(psutil.disk_usage('/')))
+		return GetData.requiredData(data)
 		
 	@staticmethod	
 	def checkNetwork():
@@ -52,7 +52,7 @@ class getData:
 
 	@staticmethod
 	def insertMData(data):
-		db,cursor = getData.connectDB()
+		db,cursor = GetData.connectDB()
 		try:
 			affectedConn = cursor.execute("insert into Memory(available, used, free) values(%s, %s, %s);", data)
 			db.commit()
@@ -66,7 +66,7 @@ class getData:
 
 	@staticmethod
 	def insertSData(data):
-		db,cursor = getData.connectDB()
+		db,cursor = GetData.connectDB()
 		try:
 			affectedConn = cursor.execute("insert into Memory(available, used, free) values(%s, %s, %s);", data)
 			db.commit()
@@ -80,7 +80,7 @@ class getData:
 
 	@staticmethod
 	def insertNData(data):
-		db,cursor = getData.connectDB()
+		db,cursor = GetData.connectDB()
 		sql_Query = "INSERT INTO Network(status) Values({});".format(data)
 		try:
 			affectedConn = cursor.execute(sql_Query)
@@ -94,12 +94,12 @@ class getData:
 		return data
 
 
-memData = getData.getMemory()
-storeData = getData.getStorage()
-netStat =getData.checkNetwork()
+memData = GetData.getMemory()
+storeData = GetData.getStorage()
+netStat =GetData.checkNetwork()
 
-getData.insertNData(netStat)
-getData.insertSData(storeData)
-getData.insertMData(memData)
+GetData.insertNData(netStat)
+GetData.insertSData(storeData)
+GetData.insertMData(memData)
 
 
