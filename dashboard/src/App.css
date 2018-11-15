@@ -1,0 +1,15 @@
+.App {
+  text-align: center;
+}
+
+.gridBlock {
+  padding: 5px;
+  display: block;
+  height: auto;
+  width: 80%;
+  margin: auto;
+}
+
+hr {
+  width: 75%;
+}
