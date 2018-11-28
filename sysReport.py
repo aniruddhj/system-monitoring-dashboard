@@ -1,4 +1,3 @@
-import psutil
 import urllib2
 import re
 import mysql.connector as conn
