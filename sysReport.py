@@ -43,23 +43,20 @@ class GetData:
 
 	@staticmethod
 	def connectDB():
-		#print "i am here"
-		db = conn.connect(host='localhost', user='root', passwd='root', db='sysMonitor')
-		#print db
+		db = conn.connect(host='localhost', user='root', passwd='root', db='sysdash')
 		cursor = db.cursor()
-		#print cursor
 		return db,cursor
 
 	@staticmethod
 	def insertMData(data):
 		db,cursor = GetData.connectDB()
 		try:
-			affectedConn = cursor.execute("insert into Memory(available, used, free) values(%s, %s, %s);", data)
+			affectedConn = cursor.execute("INSERT INTO memory(available, used, free) VALUES(%s, %s, %s);", data)
 			db.commit()
 			logging.warn("%s", affectedConn)
-			logging.info("inserted the values")
+			logging.info("Inserted data")
 		except MySQLdb.IntegrityError:
-			logging.warn("did not work")
+			logging.warn("Error")
 		finally:
 			db.close()
 		return data
@@ -68,12 +65,12 @@ class GetData:
 	def insertSData(data):
 		db,cursor = GetData.connectDB()
 		try:
-			affectedConn = cursor.execute("insert into Memory(available, used, free) values(%s, %s, %s);", data)
+			affectedConn = cursor.execute("INSERT INTO storage(available, used, free) VALUES(%s, %s, %s);", data)
 			db.commit()
 			logging.warn("%s", affectedConn)
-			logging.info("inserted the values")
+			logging.info("Inserted data")
 		except MySQLdb.IntegrityError:
-			logging.warn("did not work")
+			logging.warn("Error")
 		finally:
 			db.close()
 		return data
@@ -81,14 +78,14 @@ class GetData:
 	@staticmethod
 	def insertNData(data):
 		db,cursor = GetData.connectDB()
-		sql_Query = "INSERT INTO Network(status) Values({});".format(data)
+		sql_Query = "INSERT INTO network(status) VALUES({});".format(data)
 		try:
 			affectedConn = cursor.execute(sql_Query)
 			db.commit()
 			logging.warn("%s", affectedConn)
-			logging.info("inserted the values")
+			logging.info("Inserted data")
 		except MySQLdb.IntegrityError:
-			logging.warn("did not work")
+			logging.warn("Error")
 		finally:
 			db.close()
 		return data
