@@ -19,8 +19,8 @@ app.use(function(req, res, next) {
   res.locals.connection = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "root",
-    database: "react_sql"
+    password: "rootpass",
+    database: "sysDash"
   });
   res.locals.connection.connect();
   next();
@@ -56,4 +56,5 @@ app.use(function(err, req, res, next) {
 let http = require("http");
 module.exports = app;
 let server = http.createServer(app);
-server.listen(3001);
+server.listen(3001)
+server.close();
