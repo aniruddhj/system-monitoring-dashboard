@@ -19,11 +19,11 @@ class Memory extends Component {
       <div>
         {memory.map(memory => (
           <div key={memory.id}>
-            <p style={{ textAlign: "center" }}>Memory</p>
+            <p style={{ textAlign: "center" }}>Memory (GB)</p>
             <hr />
-            <p style={{ fontWeight: "bold" }}>Available: {memory.available}</p>
-            <p style={{ fontWeight: "bold" }}>Used: {memory.used}</p>
-            <p style={{ fontWeight: "bold" }}>Free: {memory.free}</p>
+            <p style={{ fontWeight: "bold" }}>Available: {(memory.available / 1073747824).toFixed(2)} </p>
+            <p style={{ fontWeight: "bold" }}>Used: {(memory.used / 1073747824).toFixed(2)}</p>
+            <p style={{ fontWeight: "bold" }}>Free: {(memory.free / 1073747824).toFixed(2)}</p>
           </div>
         ))}
       </div>

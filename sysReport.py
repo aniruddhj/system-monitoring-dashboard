@@ -4,6 +4,7 @@ import mysql.connector as conn
 import MySQLdb
 import sys
 import logging
+import psutil
 
 sys.tracebacklimit = 0
 
@@ -42,7 +43,7 @@ class GetData:
 
 	@staticmethod
 	def connectDB():
-		db = conn.connect(host='localhost', user='root', passwd='root', db='sysdash')
+		db = conn.connect(host='localhost', user='root', passwd='rootpass', db='sysDash')
 		cursor = db.cursor()
 		return db,cursor
 

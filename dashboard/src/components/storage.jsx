@@ -19,11 +19,11 @@ class Storage extends Component {
       <div>
         {storage.map(storage => (
           <div key={storage.id}>
-            <p style={{ textAlign: "center" }}>Storage</p>
+            <p style={{ textAlign: "center" }}>Storage (GB)</p>
             <hr />
-            <p style={{ fontWeight: "bold" }}>Avilable: {storage.available}</p>
-            <p style={{ fontWeight: "bold" }}>Used: {storage.used}</p>
-            <p style={{ fontWeight: "bold" }}>Free: {storage.free}</p>
+            <p style={{ fontWeight: "bold" }}>Avilable: {(storage.available/ 1073747824).toFixed(2)}</p>
+            <p style={{ fontWeight: "bold" }}>Used: {(storage.used / 1073747824).toFixed(2)}</p>
+            <p style={{ fontWeight: "bold" }}>Free: {(storage.free / 1073747824).toFixed(2)}</p>
           </div>
         ))}
       </div>

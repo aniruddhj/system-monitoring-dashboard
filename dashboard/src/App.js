@@ -5,7 +5,7 @@ import { Segment, Header } from "semantic-ui-react";
 
 class App extends Component {
   render() {
-    let date = new Date().toString();
+    let date = new Date().toLocaleString("en-US", {timeZone: "America/New_York"});
 
     return (
       <div className="App">
@@ -13,7 +13,7 @@ class App extends Component {
           <Header as="h2" floated="left">
             System Dashboard
           </Header>
-          <Header as="h2" floated="right">
+          <Header as="h2" floated="right" style={{fontSize :"small"}}>
             Last Updated: {date}
           </Header>
         </Segment>
